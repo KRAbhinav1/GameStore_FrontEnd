@@ -1,0 +1,23 @@
+.socials{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo p {
+    margin: 10px 40px 0  0;
+}
+
+.logo p i{
+
+    margin-right: 25px;
+}
+
+.socials h2{
+    margin: 10px 40px 0  0;
+}
+
+@media (min-width: 500px) {
+  #ham-icon{
+    display: none;
+  }
+}

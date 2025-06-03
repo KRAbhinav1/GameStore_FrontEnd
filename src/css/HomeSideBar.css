@@ -1,0 +1,14 @@
+.sidebar_content {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .sidebar_content {
+    transform: translateX(-100%);
+  }
+
+  .sidebar_content.active {
+    transform: translateX(0);
+  }
+  
+}

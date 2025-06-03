@@ -1,0 +1,23 @@
+.adminPanel {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.profileContents{
+  display: flex;
+}
+
+.adminInfo{
+  margin-left: 10px;
+}
+
+.adminInfo h2{
+  font-size: 20px;
+  color: chocolate;
+}
+
+.adminInfo p{
+  font-size: 10px;
+  margin-top: 5px;
+}
+

@@ -1,0 +1,10 @@
+.game_contents button{
+    display: inline;
+    justify-content: last baseline;
+}
+
+/* @media (max-width: 500px) {
+  .cardimage{
+    width: 60px;
+  }
+} */

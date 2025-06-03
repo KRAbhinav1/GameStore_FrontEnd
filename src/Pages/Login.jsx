@@ -1,0 +1,65 @@
+import { GoogleLogin } from "@react-oauth/google";
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Login() {
+  return (
+    <>
+      <div className="flex items-center justify-center w-full h-100 ">
+        <div className="border p-5 rounded">
+          <form className="w-70">
+            <h2 className="text-3xl flex item-center justify-center">Login</h2>
+            <div className="mt-4">
+              <input
+                type="text"
+                placeholder="Enter a username"
+                className="input input-ghost border border-zinc-600"
+              />
+            </div>
+            <br />
+            <div className="mt-4">
+              <input
+                type="password"
+                placeholder="Enter a password"
+                className="input input-ghost border border-zinc-600"
+              />
+            </div>
+            <Link className=" text-xs mt-5" style={{ textDecoration: "none" }}>
+              Forgot Password?
+            </Link>
+            <div className="flex justify-centre items-center flex-col w-full ">
+              <button className="btn btn-primary mt-3 w-20 mb-5">Login</button>
+              <GoogleLogin 
+              onSuccess={(credentialResponse) => {
+                console.log(credentialResponse.credential);
+              }}
+              onError={() => {
+                console.log("Login Failed");
+              }}
+              useOneTap
+            />
+            </div>
+            
+            
+            <div
+              className="link flex justify-center item-center"
+              style={{ textDecoration: "none" }}
+            >
+              <p className="mt-3 text-sm">
+                Don't have an account?
+                <Link to={'/signup'}
+                  className="link text-blue-500 ms-1"
+                  style={{ textDecoration:"none"}}
+                >
+                  SignUp
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Login;
