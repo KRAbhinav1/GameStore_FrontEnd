@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeSideBar from "./HomeSideBar";
 import "../css/Home.css";
 import { Link } from "react-router-dom";
+import { useGameStore } from "../store/useGameStore";
+import { baseURL } from "../lib/baseURL";
+
 function Home() {
+  const { games, getGames } = useGameStore();
+
+  useEffect(() => {
+    getGames();
+  }, []);
+
   return (
     <>
       <div className="home">
         <div className="">
           <HomeSideBar />
         </div>
-
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 me-5 mt-5  ">
           <div id="ham-icon" className=" drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -108,270 +116,21 @@ function Home() {
               </ul>
             </div>
           </div>
-
-          <div className="card bg-base-300 shadow-lg">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
+          {games.map((game) => (
+            <div className="card bg-base-300 shadow-lg" key={game.id}>
+              <figure>
+                <img src={`${baseURL}/uploads/${game.img}`} alt={game.name} />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title italic">{game.name}</h2>
+                <p>{game.desc}</p>
+                <div className="card-actions justify-between">
+                  <button className="btn btn-primary">Edit</button>
+                  <button className="btn btn-warning">Delete</button>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1973530/ss_c14bbf4d204aab3372dfb89b1101556dde999ac1.600x338.jpg?t=1728532474"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Limbus Company</h2>
-              <p>
-                As the Executive Manager of Limbus Company, lead your group of
-                twelve Sinners, venture into the buried facilities of Lobotomy
-                Corporation, and lay claim on the Golden Boughs.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1229490/ss_7460a480b1deb03f64cbfff0173445fb50d0c514.600x338.jpg?t=1740623813"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Ultrakill</h2>
-              <p>
-                ULTRAKILL is a fast-paced ultraviolent retro FPS combining the
-                skill-based style scoring from character action games with
-                unadulterated carnage inspired by the best shooters of the '90s.
-                Rip apart your foes with varied destructive weapons and shower
-                in their blood to regain your health
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">View</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-base-300 shadow-lg ">
-            <figure>
-              <img
-                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
-                alt="Games"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title italic">Legacy: Steel & Sorcery</h2>
-              <p>
-                Legacy: Steel & Sorcery is an action-combat PvPvE extraction RPG
-                set in the classic fantasy world of Mithrigarde, rich with
-                expansive outdoor zones. Play solo or with friends to gather
-                loot, slay creatures, and defeat other players.
-              </p>
-              <div className="card-actions justify-between">
-                <button className="btn btn-primary">Edit</button>
-                <button className="btn btn-warning">Delete</button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

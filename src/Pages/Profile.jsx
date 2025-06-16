@@ -12,7 +12,7 @@ function Profile() {
               <div className="adminprofile">
           <h2>Profile</h2>
           <div className="bg-base-300 rounded"  style={{marginRight:115}}>
-            <form>
+            
               <div className="profileContents">
                 <div className="profilePicture" >
                   <img
@@ -32,7 +32,7 @@ function Profile() {
                   <p>Idukki,Kerala</p>
                 </div>
               </div>
-            </form>
+            
           </div>
           <br />
           <h2>Personal Information</h2>

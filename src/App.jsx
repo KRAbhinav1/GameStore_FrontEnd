@@ -15,12 +15,13 @@ import SellerProduct from './Pages/SellerProduct'
 import SellerSettings from './Pages/SellerSettings'
 import RequestPermission from './Pages/RequestPermission'
 import GrantPermission from './Pages/GrantPermission'
-import SellerSideBar from './Pages/SellerSideBar'
+// import SellerSideBar from './Pages/SellerSideBar'
 import CardContent from './Pages/CardContent'
 import Favourites from './Pages/Favourites'
 import SellerSignup from './Pages/SellerSignup'
 import AddGameForm from './Pages/AddGameForm'
 import SellerLogout from './Pages/SellerLogout'
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path='/favourites' element={<Favourites/>}/>
           </Routes>
         <Footer/>
+         <ToastContainer />
     </div>
   )
 }

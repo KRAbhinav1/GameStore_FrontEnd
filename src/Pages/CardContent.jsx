@@ -8,7 +8,7 @@ function CardContent() {
       <div className=" grid sm:grid-cols-1 md:grid-cols-2 ">
         <div>
           <img className="max-w-full h-auto"
-            src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344320/ss_20b74712f86f84f168f66e959aac596ba513e7cf.600x338.jpg?t=1747328908"
+            src={`http://localhost:5173/uploads/${game.img}`}
             alt=""
             
           />

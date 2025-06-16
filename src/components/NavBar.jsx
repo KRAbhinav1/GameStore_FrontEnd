@@ -1,8 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
 // import "../css/NavBar.css";
 
 function NavBar() {
+  const { authUser, checkAuth, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    checkAuth();
+    if (!authUser) {
+      navigate("/login");
+    }
+  }, [checkAuth, authUser]);
+  const handleLogout = async () => {
+    await logout();
+  };
   return (
     <>
       <div
@@ -36,15 +49,20 @@ function NavBar() {
               tabIndex={1}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-40 p-1 shadow"
             >
-               <li>
-               <Link to={"/login"}>Login</Link>
-              </li>
-              <li>
-               <Link to={"/signup"}>SignUp</Link>
-              </li>
-              <li>
-               <Link to={"/becomeaseller"}>Become a publisher</Link>
-              </li>
+              {!authUser && (
+                <>
+                  <li>
+                    <Link to={"/login"}>Login</Link>
+                  </li>
+                  <li>
+                    <Link to={"/signup"}>SignUp</Link>
+                  </li>
+                  <li>
+                    <Link to={"/becomeaseller"}>Become a publisher</Link>
+                  </li>
+                </>
+              )}
+
               <li>
                 <Link to={"/dashboard"}>Admin profile</Link>
               </li>
@@ -53,6 +71,9 @@ function NavBar() {
               </li>
               <li>
                 <Link to={"/cardcontent"}>CardContent</Link>
+              </li>
+              <li>
+                <Link onClick={handleLogout}>Logout</Link>
               </li>
             </ul>
           </div>
@@ -63,7 +84,6 @@ function NavBar() {
           </Link>
         </div>
         <div className="navbar-end">
-          
           <Link to={"/favourites"}>
             <button className="btn btn-ghost btn-circle">
               <div className="indicator">

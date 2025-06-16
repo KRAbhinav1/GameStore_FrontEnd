@@ -1,7 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuthStore } from "../store/useAuthStore";
 
 function SignUp() {
+  const navigate = useNavigate();
+  const { signup } = useAuthStore();
+  const authUser = useAuthStore((state) => state.authUser);
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "user"
+  });
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (!user.name || !user.email || !user.password) {
+      toast.error("Please fill the form completely");
+    } else {
+      await signup(user);
+    }
+  };
+  
+  useEffect(() => {
+    if (authUser?.role === "user") {
+      navigate("/");
+    }
+  }, [authUser, navigate]);
+
   return (
     <>
       <div className="flex items-center justify-center w-full h-100 ">
@@ -15,15 +43,16 @@ function SignUp() {
                 type="text"
                 placeholder="Enter your name"
                 className="input input-ghost border border-zinc-600"
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
-              
             </div>
             <br />
             <div className="mt-4">
               <input
                 type="text"
-                placeholder="Create a username"
+                placeholder="Enter a email"
                 className="input input-ghost border border-zinc-600"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
             </div>
             <br />
@@ -32,16 +61,19 @@ function SignUp() {
                 type="password"
                 placeholder="Create a Password"
                 className="input input-ghost border border-zinc-600"
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </div>
             <div className="flex justify-center items-center">
-              <button className="btn btn-primary mt-3 ">Sign Up</button>
+              <button
+                className="btn btn-primary mt-3 "
+                onClick={(e) => handleRegister(e)}
+              >
+                Sign Up
+              </button>
             </div>
             <div>
-              <p
-                className="link "
-                style={{ textDecoration: "none" }}
-              >
+              <p className="link " style={{ textDecoration: "none" }}>
                 Already have an account?
                 <Link
                   to={"/login"}
