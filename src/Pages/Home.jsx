@@ -4,8 +4,10 @@ import "../css/Home.css";
 import { Link } from "react-router-dom";
 import { useGameStore } from "../store/useGameStore";
 import { baseURL } from "../lib/baseURL";
+import { useCartStore } from "../store/useCartStore";
 
 function Home() {
+  const {addCart} = useCartStore()
   const { games, getGames } = useGameStore();
 
   useEffect(() => {
@@ -125,8 +127,8 @@ function Home() {
                 <h2 className="card-title italic">{game.name}</h2>
                 <p>{game.desc}</p>
                 <div className="card-actions justify-between">
-                  <button className="btn btn-primary">Edit</button>
-                  <button className="btn btn-warning">Delete</button>
+                  <button className="btn btn-primary">Buy</button>
+                  <button className="btn btn-warning" onClick={()=>addCart(game._id)}>Cart</button>
                 </div>
               </div>
             </div>

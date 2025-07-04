@@ -10,12 +10,15 @@ function Dashboard() {
             <SideBar />
           </p>
         </div>
-        <div className="adminprofile" style={{overflowX: 'auto', width: '100%'}}>
+        <div
+          className="adminprofile"
+          style={{ overflowX: "auto", width: "100%" }}
+        >
           <h2>Profile</h2>
-          <div className="bg-base-300 rounded"  style={{marginRight:115}}>
+          <div className="table  table-auto bg-base-300 rounded">
             <form>
               <div className="profileContents">
-                <div className="profilePicture" >
+                <div className="profilePicture">
                   <img
                     src="https://static.vecteezy.com/system/resources/previews/025/869/629/non_2x/round-profile-image-of-man-avatar-for-social-networks-fashion-beauty-blue-and-black-bright-illustration-in-trendy-style-vector.jpg"
                     style={{
@@ -36,34 +39,35 @@ function Dashboard() {
             </form>
           </div>
           <br />
+
           <h2>Personal Information</h2>
-         
-          <table className="bg-base-300 rounded" style={{marginLeft:0}}>
+          <table className="table  table-auto bg-base-300 rounded">
             <tbody>
               <tr>
-                <td>First name:K R</td>
-                <td>Last name:Abhinav</td>
-                <td>Date of Birth:01-02-2000</td>
+                <td>First name: K R</td>
+                <td>Last name: Abhinav</td>
+                <td>Date of Birth: 01-02-2000</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
-                <td>Email:spectrum4you321@gmail.com</td>
-                <td>Phone Number:9876543210</td>
-                <td>Role:Admin</td>
+                <td>Email: spectrum4you321@gmail.com</td>
+                <td>Phone Number: 9876543210</td>
+                <td>Role: Admin</td>
               </tr>
             </tbody>
           </table>
           <br />
           <h2>Address</h2>
-          <table className="bg-base-300 rounded" style={{marginLeft:0}}> 
+          <table className="table  table-auto bg-base-300 rounded">
             <tbody>
               <tr>
                 <td>Country:India</td>
                 <td>City:Thrissur</td>
                 <td>Postal Code:680731</td>
               </tr>
-            </tbody></table>
+            </tbody>
+          </table>
         </div>
       </div>
     </>

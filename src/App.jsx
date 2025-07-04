@@ -22,6 +22,8 @@ import SellerSignup from './Pages/SellerSignup'
 import AddGameForm from './Pages/AddGameForm'
 import SellerLogout from './Pages/SellerLogout'
 import { ToastContainer, toast } from 'react-toastify';
+import EditForm from './Pages/EditForm'
+import Orders from './Pages/Orders'
 
 function App() {
   return (
@@ -31,12 +33,13 @@ function App() {
           <Route path='/becomeaseller' element={<SellerSignup/>}/>
 
           <Route path='/' element={<Home/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
           <Route path='/requestpermission' element={<RequestPermission/>}></Route>
           <Route path='/grantpermission' element={<GrantPermission/>}></Route>
-          
+          <Route path='/myOrders' element={<Orders/>}/>
+
+          <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/userpanel' element={<UserPanel/>}></Route>
           <Route path='/products' element={<Products/>}/>
           <Route path='/analytics' element={<Analytics/>}/>
@@ -44,7 +47,6 @@ function App() {
 
           <Route path='/sellerprofile' element={<Profile/>}/>
           <Route path='/sellerproducts' element={<SellerProduct/>}/>
-          
           <Route path='/sellersettings' element={<SellerSettings/>}/>
           <Route path='/sellerlogout' element={<SellerLogout/>}/>
           <Route path='/sellerAddGame' element={<AddGameForm/>}></Route>

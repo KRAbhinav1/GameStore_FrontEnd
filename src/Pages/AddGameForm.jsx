@@ -14,12 +14,11 @@ function AddGameForm() {
   console.log(game);
 
   const handleAdd = async () => {
-    // e.preventDefault();
     if (!game.name || !game.category || !game.desc || !game.rate || !game.img) {
       toast.error("Please fill up all the details");
     } else {
       const formData = new FormData();
-      formData.append("name", game.name);
+      formData.append("name",game.name)
       formData.append("category", game.category);
       formData.append("desc", game.desc);
       formData.append("rate", game.rate);

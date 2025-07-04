@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import SellerSideBar from "./SellerSideBar";
 import { useGameStore } from "../store/useGameStore";
 import { baseURL } from "../lib/baseURL";
+import EditForm from "./EditForm";
 
 function SellerProduct() {
-  const { pubGames, getPublisherGames } = useGameStore();
+  const { pubGames, getPublisherGames  } = useGameStore();
 
   useEffect(() => {
     getPublisherGames();
   }, []);
   console.log(pubGames);
+
+  
 
   return (
     <>
@@ -30,8 +33,8 @@ function SellerProduct() {
                   <h2 className="card-title italic">{game.name}</h2>
                   <p>{game.desc}</p>
                   <div className="card-actions justify-between">
-                    <button className="btn btn-primary">Edit</button>
-                    <button className="btn btn-warning">Delete</button>
+                    <EditForm game={game} modalId={`edit_modal_${game._id}`}/>
+                    <button className="btn btn-warning" >Delete</button>
                   </div>
                 </div>
               </div>

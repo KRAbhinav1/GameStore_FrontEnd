@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 
 function Login() {
-  const { login } = useAuthStore();
+  const { login, googleSignin } = useAuthStore();
   const navigate = useNavigate();
   const authUser = useAuthStore((state) => state.authUser);
 
@@ -31,6 +31,8 @@ function Login() {
     }
   }, [authUser, navigate]);
 
+  
+  
   return (
     <>
       <div className="flex items-center justify-center w-full h-100 ">
@@ -66,7 +68,7 @@ function Login() {
               </button>
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
-                  console.log(credentialResponse.credential);
+                  googleSignin(credentialResponse)
                 }}
                 onError={() => {
                   console.log("Login Failed");

@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
+import { jwtDecode } from "jwt-decode";
 
 // zustand //
 export const useAuthStore = create((set) => ({
@@ -15,7 +16,7 @@ export const useAuthStore = create((set) => ({
       set({ authUser: null });
     }
   },
-  
+
   signup: async (user) => {
     set({ loading: true });
     try {
@@ -46,6 +47,23 @@ export const useAuthStore = create((set) => ({
       toast.success("Logged out successfully");
     } catch (error) {
       toast.error(err.response.data.message);
+    }
+  },
+
+  //For google signin
+  googleSignin: async (credentialResponse) => {
+    const { credential } = credentialResponse;
+    const { name, email } = jwtDecode(credential);
+    try {
+      const res = await axiosInstance.post("/google/signin", {
+        name,
+        email,
+      });
+      console.log(res);
+
+      toast.success("login successfully");
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
   },
 }));

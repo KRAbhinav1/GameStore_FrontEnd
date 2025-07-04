@@ -13,6 +13,7 @@ function NavBar() {
       navigate("/login");
     }
   }, [checkAuth, authUser]);
+
   const handleLogout = async () => {
     await logout();
   };
@@ -62,15 +63,8 @@ function NavBar() {
                   </li>
                 </>
               )}
-
               <li>
-                <Link to={"/dashboard"}>Admin profile</Link>
-              </li>
-              <li>
-                <Link to={"/sellerprofile"}>Seller profile</Link>
-              </li>
-              <li>
-                <Link to={"/cardcontent"}>CardContent</Link>
+                <Link to={"/myOrders"}>My Orders</Link>
               </li>
               <li>
                 <Link onClick={handleLogout}>Logout</Link>
